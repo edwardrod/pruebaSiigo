@@ -4,7 +4,7 @@ package co.com.siigo.automation.stepdefinitions.front;
 import co.com.siigo.automation.questions.front.ValidacionLoginExitosa;
 import co.com.siigo.automation.tasks.front.AbrirAplicacion;
 import co.com.siigo.automation.tasks.front.IniciarSesion;
-import co.com.siigo.automation.utils.front.setUpTest;
+import co.com.siigo.automation.utils.setUpTest;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;

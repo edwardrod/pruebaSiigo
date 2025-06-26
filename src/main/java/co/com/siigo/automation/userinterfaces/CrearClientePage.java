@@ -23,9 +23,9 @@ public class CrearClientePage {
 
 
     public static final Target APELLIDO_SHADOW_ROOT = Target.the("Person type shadow root")
-            .locatedBy("siigo-textfield-web:nth-child(1)");
+            .locatedBy("div > div > div:nth-child(1) > div.column.is-7 > div:nth-child(2) > siigo-textfield-web");
     public static final Target APELLIDO_INPUT = Target.the("Person type list")
-            .locatedBy(".mdc-text-field__ripple");
+            .locatedBy(".mdc-text-field__input");
 
     public static final Target PRUEBA = Target.the("Person type shadow root")
             .locatedBy("siigo-textfield-web:nth-child(1):nth(2)");

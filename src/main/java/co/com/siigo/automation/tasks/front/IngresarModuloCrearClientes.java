@@ -5,6 +5,7 @@ import co.com.siigo.automation.interactions.front.WaitStatic;
 import net.serenitybdd.core.pages.ResolvableElement;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
+import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.targets.Target;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import org.openqa.selenium.By;
@@ -29,10 +30,7 @@ public class IngresarModuloCrearClientes implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
             actor.attemptsTo(
-                    WaitUntil.the(HEADER_MOLECULE_SHADOW_ROOT, isVisible()).forNoMoreThan(30).seconds(),
-                    ClickShadowRoot.with(HEADER_MOLECULE_SHADOW_ROOT, CREATE_SHADOW_ROOT),
-                    ClickShadowRoot.with(HEADER_MOLECULE_SHADOW_ROOT, CLIENTES_BUTTON),
-                    WaitStatic.milliseconds(10000),
+                    Click.on(CLIENTES_BUTTON),
                     WaitUntil.angularRequestsHaveFinished()
 
             );

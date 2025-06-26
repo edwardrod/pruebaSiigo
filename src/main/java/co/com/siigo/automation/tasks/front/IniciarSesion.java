@@ -1,16 +1,15 @@
 package co.com.siigo.automation.tasks.front;
 
-import static co.com.siigo.automation.userinterfaces.DashboardPage.TITULO_INICIO;
-import static co.com.siigo.automation.userinterfaces.LoginPage.CAMPO_CORREO_ELECTRONICO;
-import static co.com.siigo.automation.userinterfaces.LoginPage.CAMPO_CONTRASENA;
-import static co.com.siigo.automation.userinterfaces.LoginPage.BOTON_CONTINUAR;
-
+import co.com.siigo.automation.interactions.front.WaitStatic;
+import co.com.siigo.automation.userinterfaces.LoginPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
-import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 
+import static co.com.siigo.automation.userinterfaces.DashboardPage.TITULO_INICIO;
+import static co.com.siigo.automation.userinterfaces.LoginPage.BTN_INGRESAR;
+import static co.com.siigo.automation.userinterfaces.LoginPage.TXT_BANNER;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
@@ -30,11 +29,11 @@ public class IniciarSesion implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        actor.attemptsTo(
-                WaitUntil.the(CAMPO_CORREO_ELECTRONICO, isVisible()).forNoMoreThan(10).seconds(),
-                Enter.theValue(correoElectronico).into(CAMPO_CORREO_ELECTRONICO),
-                Enter.theValue(contrasena).into(CAMPO_CONTRASENA),
-                Click.on(BOTON_CONTINUAR),
-                WaitUntil.the(TITULO_INICIO, isVisible()).forNoMoreThan(10).seconds());
+        // Hacer un espera estática si es necesario
+        actor.attemptsTo(WaitUntil.the(TXT_BANNER, isVisible()).forNoMoreThan(30).seconds());
+        LoginPage.getCorreoField().sendKeys(correoElectronico);
+        LoginPage.getContrasenaField().sendKeys(contrasena);
+        actor.attemptsTo(Click.on(BTN_INGRESAR));
+        actor.attemptsTo(WaitUntil.the(TITULO_INICIO, isVisible()).forNoMoreThan(30).seconds());
     }
 }

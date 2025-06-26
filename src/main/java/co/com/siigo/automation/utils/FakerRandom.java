@@ -1,4 +1,4 @@
-package co.com.siigo.automation.utils.front;
+package co.com.siigo.automation.utils;
 
 import net.datafaker.Faker;
 
